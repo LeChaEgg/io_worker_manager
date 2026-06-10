@@ -1,0 +1,13 @@
+.DS_Store
+.venv/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+
+# Local/private runtime files
+ID.md
+reports.md
+data/
+logs/
+session_history.md
+.claude/
