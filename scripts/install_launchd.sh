@@ -12,6 +12,7 @@ mkdir -p "$HOME/Library/LaunchAgents" "$ROOT/logs" "$ROOT/data"
 awk -v root="$ROOT" '{ gsub(/__ROOT__/, root); print }' "$SOURCE_PLIST" > "$TMP_PLIST"
 cp "$TMP_PLIST" "$TARGET_PLIST"
 
+launchctl bootout "gui/$(id -u)/$LABEL" >/dev/null 2>&1 || true
 launchctl bootout "gui/$(id -u)" "$TARGET_PLIST" >/dev/null 2>&1 || true
 launchctl bootstrap "gui/$(id -u)" "$TARGET_PLIST"
 launchctl enable "gui/$(id -u)/$LABEL"

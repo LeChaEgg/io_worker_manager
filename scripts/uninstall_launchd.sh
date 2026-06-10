@@ -4,6 +4,7 @@ set -euo pipefail
 LABEL="com.hxie.io-worker-manager"
 TARGET_PLIST="$HOME/Library/LaunchAgents/$LABEL.plist"
 
+launchctl bootout "gui/$(id -u)/$LABEL" >/dev/null 2>&1 || true
 launchctl bootout "gui/$(id -u)" "$TARGET_PLIST" >/dev/null 2>&1 || true
 rm -f "$TARGET_PLIST"
 
